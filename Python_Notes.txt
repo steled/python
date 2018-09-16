@@ -1,0 +1,143 @@
+Bezeichner
+- muss mit einem Buchstaben oder Unterstrich beginnen
+- Optional dürfen Buchstaben, Unterstrich oder Ziffern folgen
+
+Import-Anweisungen
+- importieren des Namen der benötigten Funktion in den lokalen Namensraum:
+	from modulname import funktionsname
+	Beispiel:
+		from time import asctime
+- importieren aller Objekte des Moduls in den Namensraum:
+	from modulname import *
+	Beispiel:
+		from time import *
+- importieren des ganzen Moduls:
+	import modulname
+	modulname.funktionsname(argumentliste)
+	Beispiel:
+		import time
+		time.asctime()
+- importieren eines Moduls unter einem neuen, kürzeren Namen:
+	import modulname as kurzform
+	Beispiel:
+		import time as t
+		t.asctime()
+
+Explizites Verbinden von Zeilen
+- mittels eines Backslashs \ werden mehrere physische Zeilen zu einer logischen Zeile verbunden
+	Beispiel:
+		summe = 1 + \
+		2
+- hinter dem Backslash darf in derselben Zeile nichts mehr stehen
+	Beispiel:
+		summe = 1 + \	# Summenberechnung
+		2
+
+Impliziter Verbinden von Zeilen
+- geklammerte Ausdrücke (mit normalen, eckigen oder geschweiften Klammern) dürfen auf mehrere physische Zeilen verteilt werden
+	Beispiele:
+		summe = (1 + 2 + 3 +
+				4 + 5 + 6)
+
+		wochentage = ["Sonntag", "Montag", "Dienstag",
+					 "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
+- implizit verbundene Zeilen dürfen Kommentare enthalten
+	Beispiel:
+		# Berechnung der Oberfläche eines Quaders
+		länge = 6
+		breite = 2
+		höhe = 3
+		oberfläche = 2*(
+				  breite*höhe		# Vorder- und Rückseite
+				+ länge*breite		# Ober- und Unterseite
+				+ länge*höhe)		# rechte und linke Seite
+		print(oberfläche)
+
+Einrückungen - Anweisungsblöcke
+- die Anzahl der Leerzeichen vor dem ersten Nichtleerzeichen (Einrückungsgrad) ist beliebig
+- alle zusammengehörigen Anweisungen eines Blocks müssen exakt um die gleiche Anzahl von Stellen eingerückt sein
+	Beispiel:
+		# Summe der Zahlen von 1 bis 5
+		summe = 0
+		for i in [1, 2, 3, 4, 5]
+			summe = summe + i							# Beginn eines Blocks
+			print("Summe von 1 bis ", i, ":", summe)	# Ende eines Blocks
+		print("Ende der Rechnung")
+
+Bezeichnerwahl
+- Variablennamen und Namen von Funktionen und Methoden mit einem kleinen Buchstaben beginnen
+- Klassennamen beginnen mit einem großen Buchstaben
+- wird ein Bezeichner aus mehreren Wörtern zusammengesetzt beginnt jedes Teilwort (außer dem ersten) mit einem Großbuchstaben
+	Beispiele:
+		anzahlPersonen
+		volumenQuader
+- bei langen Namen sollten Abkürzungen verwendet werden
+- Tipps zur Formulierung prägnanter Bezeichner:
+	- gibt es passende Abkürzungen des allgemeinen Sprachgebrauchs sollten diese verwendet werden
+		Beispiele:
+			std - Stunde
+			per - Person
+	- häufig gebrauchte Namen sollten kürzer als selten gebrauchte sein
+	- Abkürzungen sollten nach Möglichkeit aussprechbar sein
+	- sehr ähnliche Bezeichner vermeiden
+
+Layout
+- lange Skripte (mehr als zehn Zeiclen) sollten durch Leerzeilen in sinnvolle Abschnitte unterteilt werden
+
+Kommentare
+- bei größeren Projekten sollte am Anfang ein Kommentar stehen der die Historie, den aktuellen Stand (Version) und die Funktion
+  des Programms beschreibt
+	Beispiel:
+		#------------------------------------------------
+		# Dateiname: quader.py
+		# Version: 1.0
+		# Funktion: Berechnung des Volumens eines Quaders
+		# Autor: Michael Weigend
+		# Datum der letzten Änderung: 26.09.16
+		#------------------------------------------------
+- um verschachtelte Blockstrukturen transparenter zu machen kann das Ende einer zusammengesetzten Anweisung (z.B. eine for-Anweisung)
+  durch einen Kommentar markiert werden
+	Beispiel:
+		for i3 in [0, 1]:
+			for i2 in [0, 1]:
+				for i1 in [0, 1]:
+					for i0 in [0, 1]:
+						print(i3, i2, i1, i0, end="   ")
+						# ende for i0
+					# ende for i1
+				print()
+				# ende for i2
+			# ende for i3
+- Kommentare sollten während der Programmierung geschrieben werden
+- nicht zu viel kommentieren, kurze prägnante Erläuterungen (Stichworte) zu schwer durchschaubaren Anweisungen
+- nicht den Programmtext mit anderen Worten wiederholen
+	Beispiel:
+		i = i + 1	# erhöhe i um 1
+
+Kurze Zeichenketten
+- sind durch Hochkommata ' oder Anführungszeichen " eingerahmt und müssen sich in einer (logischen) Programmzeile befinden
+- der Backslahs, das Neline-Zeichen und desjenigen Zeichens (Anführungszeichen oder Hochkommata) das zur Bildung des Strings verwendet wurde sind alle ASCII-Zeichen verwendbar
+
+Lange Zeichenketten
+- können pber mehrere Zeilen gehen und werden durch drei hintereinandergestellte Anführungszeichen """ oder Hochkommata ''' eingeschlossen
+
+Tupel
+- sind Zusammenfassungen mehrerer Objekte evtl. unterschiedlicher Typen zu einem komplexen Objekt
+	Beispiel:
+		- Name und Geburtsdatum einer Person
+		- Adresse als Tupel mit 5 Elementen (Name, Straße, Hausnummer, Postleitzahl, Stadt)
+- ein Tupel besteht aus einer Folge von Objekten evtl. unterschiedlicher Typen die durch Komma getrennt sind
+- sie können, müssen aber nicht, in rinden Klammern stehen
+	Beispiel:
+		1, 2, 3
+		(1, 2, 3)
+		("Ampel", 3, ('rot', 'gelb', 'grün'))
+- anstatt die Elemente eines Tupels explizit zu nennen kann man auch Variablen verwenden
+	Beispiel:
+		anrede = 'Liebe Monika,'
+		text = '\nalles Gute zum Geburtstag!'
+		gruss = anrede, text
+		print(gruss)
+		
+		('Liebe Monika,', '\nalles Gute zum Geburtstag!')
+		print(gruss[0], gruss[1])
